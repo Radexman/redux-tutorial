@@ -6,6 +6,7 @@ import {
   decrement,
   incrementByAmount,
   decrementByAmount,
+  reset,
 } from "./counterSlice";
 
 const Counter = () => {
@@ -32,6 +33,21 @@ const Counter = () => {
 
   const handleDecrementByAmount = () => {
     dispatch(decrementByAmount(number));
+  };
+
+  const handleReset = () => {
+    const windowValue = window.confirm("Do you want to reset");
+
+    if (count === 0) {
+      window.alert("Counter value is already zero");
+      return;
+    }
+
+    if (!windowValue) {
+      return;
+    }
+
+    dispatch(reset());
   };
 
   return (
@@ -67,6 +83,9 @@ const Counter = () => {
           </button>
         </div>
       </form>
+      <button onClick={handleReset} type="button">
+        Reset
+      </button>
     </section>
   );
 };

@@ -25,10 +25,18 @@ export const counterSlice = createSlice({
     decrementByAmount: (state, action: PayloadAction<number>) => {
       state.count -= action.payload;
     },
+    reset: state => {
+      state.count = initialState.count;
+    },
   },
 });
 
-export const { increment, decrement, incrementByAmount, decrementByAmount } =
-  counterSlice.actions;
+export const {
+  increment,
+  decrement,
+  incrementByAmount,
+  decrementByAmount,
+  reset,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;
